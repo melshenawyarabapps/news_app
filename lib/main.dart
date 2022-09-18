@@ -1,23 +1,19 @@
-import 'package:code_projects/bmi_home_page.dart';
+import 'package:code_projects/facebook_home.dart';
+import 'package:code_projects/facebook_login.dart';
 import 'package:flutter/material.dart';
-
-/*
-App icon & name
-
-ListView & GridView
-
-Gradient
-
- */
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,12 +22,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BMIHomePage()
+      routes: {
+        'home':(context)=>FacebookHome(),
+      },
+      home: FacebookLogin(),
     );
   }
-}
 
-/*
-Color(0xFF3FABF4),
-Color(0xFF3ACED4),
- */
+
+}
