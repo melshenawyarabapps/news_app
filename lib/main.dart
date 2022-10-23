@@ -1,9 +1,6 @@
-import 'package:code_projects/my_home_page.dart';
-import 'package:code_projects/my_provider.dart';
-import 'package:code_projects/quiz_provider.dart';
-import 'package:code_projects/test/add_provider.dart';
-import 'package:code_projects/test/test_provider.dart';
-import 'package:code_projects/test/val.dart';
+import 'package:code_projects/provider/bottom_nav_provider.dart';
+import 'package:code_projects/provider/news_provider.dart';
+import 'package:code_projects/view/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,29 +26,24 @@ BottomSheet()
 
 
  */
+
 void main() {
   runApp(
-            MultiProvider(
-              providers: [
-
-                ChangeNotifierProvider(
-                  create: (ctx){
-                    return MyProvider();
-                  },
-                ),
-                ChangeNotifierProvider(
-                  create: (ctx){
-                    return AddProvider();
-                  },
-                )
-              ],
-                child: MyApp()
-            )
+    MultiProvider(
+      child: MyApp(),
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => BottomNavProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => NewsProvider(),
+        )
+      ],
+    ),
   );
 }
 
 class MyApp extends StatefulWidget {
-
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -60,20 +52,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Quiz',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: {
-        'home': (ctx) {
-          return MyHomePage();
-        },
-        'val': (ctx) {
-          return Validator();
-        },
-      },
-      home:TestProvider(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Quiz',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomeScreen());
   }
 }
