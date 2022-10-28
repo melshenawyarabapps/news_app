@@ -12,14 +12,16 @@ class MyHomeScreen extends StatefulWidget {
 }
 
 class _MyHomeScreenState extends State<MyHomeScreen> {
-
   @override
-  void initState() {
+  initState() {
     super.initState();
     Future.delayed(Duration.zero,()async{
-      Provider.of<NewsProvider>(context,listen: false).getData();
-
+      Provider.of<NewsProvider>(context, listen: false).getData(cat: 'business');
+      Provider.of<NewsProvider>(context, listen: false).getData(cat: 'sports');
+      Provider.of<NewsProvider>(context, listen: false).getData(cat: 'science');
     });
+
+
   }
 
   @override
@@ -41,7 +43,13 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                 size: 30,
               ),
               onPressed: () {
-                Provider.of<NewsProvider>(context,listen: false).getData();
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (ctx) => SearchScreen(),
+                //   ),
+                // );
+                // Provider.of<NewsProvider>(context, listen: false).getData();
               },
             ),
             IconButton(

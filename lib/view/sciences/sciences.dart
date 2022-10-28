@@ -11,7 +11,7 @@ class Sciences extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<NewsProvider>(builder: (context, provider, _) {
-      return provider.loading
+      return provider.scienceData.isEmpty
           ? Center(
         child: CircularProgressIndicator(
           color: Colors.deepOrange,
@@ -22,9 +22,9 @@ class Sciences extends StatelessWidget {
         child: ListView.separated(
           itemBuilder: (BuildContext context, int index) {
             return NewsItem(
-              title: provider.data[index]['title'],
-              date: provider.data[index]['publishedAt'],
-              image: provider.data[index]['urlToImage'].toString(),
+              title: provider.scienceData[index]['title'],
+              date: provider.scienceData[index]['publishedAt'],
+              image: provider.scienceData[index]['urlToImage'].toString(),
             );
           },
           separatorBuilder: (BuildContext context, int index) {
@@ -35,7 +35,7 @@ class Sciences extends StatelessWidget {
               height: 30,
             );
           },
-          itemCount: provider.data.length,
+          itemCount: provider.scienceData.length,
         ),
       );
     });

@@ -48,7 +48,7 @@ class NewsItem extends StatelessWidget {
                         color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.w900),
-                    maxLines: 4,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

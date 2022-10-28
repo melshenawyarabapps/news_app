@@ -22,7 +22,7 @@ class Sports extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<NewsProvider>(builder: (context, provider, _) {
-      return provider.loading
+      return provider.sportsData.isEmpty
           ? Center(
         child: CircularProgressIndicator(
           color: Colors.deepOrange,
@@ -33,9 +33,9 @@ class Sports extends StatelessWidget {
         child: ListView.separated(
           itemBuilder: (BuildContext context, int index) {
             return NewsItem(
-              title: provider.data[index]['title'],
-              date: provider.data[index]['publishedAt'],
-              image: provider.data[index]['urlToImage'].toString(),
+              title: provider.sportsData[index]['title'],
+              date: provider.sportsData[index]['publishedAt'],
+              image: provider.sportsData[index]['urlToImage'].toString(),
             );
           },
           separatorBuilder: (BuildContext context, int index) {
@@ -46,7 +46,7 @@ class Sports extends StatelessWidget {
               height: 30,
             );
           },
-          itemCount: provider.data.length,
+          itemCount: provider.sportsData.length,
         ),
       );
     });
